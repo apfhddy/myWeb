@@ -1,5 +1,8 @@
 package com.example.demo.tables.library;
 
-public class LibraryController {
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+public class LibraryController {
+	
 }
