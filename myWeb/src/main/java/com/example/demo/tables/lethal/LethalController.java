@@ -18,12 +18,12 @@ public class LethalController {
 	@GetMapping("/hidden/download")
 	public void getFile(@RequestParam(name="fileName") String file,HttpServletResponse res) throws IOException {
 		File f = new File("src/main/resources/static/hidden/dir/"+file);
-		
+		System.out.println(file); 
 		res.setContentType("application/download");
 		res.setContentLength((int)f.length());
 		res.setHeader("Content-disposition", "attachment;filename=\"" + file + "\"");
         
-		
+		System.out.println(f);
 		OutputStream os = res.getOutputStream();
         
 		FileInputStream fis = new FileInputStream(f);
