@@ -1,0 +1,6 @@
+create table dir_type(
+D_type_no number constraint dir_type_pk primary key,
+name varchar2(30) not null
+);
+
+create sequence dir_type_seq nocache;
