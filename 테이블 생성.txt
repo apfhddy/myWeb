@@ -59,3 +59,33 @@ create sequence library_file_seq nocache;
 
 
 
+
+
+create table file_Detail(
+F_DT_no number constraint file_Detail_pk primary key,
+LB_F_no number constraint file_Detail_fk1 references library_file(LB_F_no) not null,
+update_VER number constraint file_Detail_fk2 references JDK_VER(JDK_VER_no) not null,
+isGeneric number constraint file_Detail_ck check(isGeneric in(0,1)) not null,
+DT varchar2(4000)
+);
+create sequence file_Detail_seq nocache;
+
+
+
+
+
+
+
+
+create table test_constructor(
+test_constructor_no number constraint test_constructor_pk primary key,
+LB_F_no number constraint test_constructor_fk1 references library_file(LB_F_no) not null,
+update_VER number constraint test_constructor_fk2 references JDK_VER(JDK_VER_no) not null,
+inputHTML varchar2(500) not null,
+add_code varchar2(10) not null
+);
+create sequence test_constructor_seq nocache;
+
+
+
+
