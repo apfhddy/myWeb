@@ -87,5 +87,13 @@ add_code varchar2(10) not null
 create sequence test_constructor_seq nocache;
 
 
+create table test_generic(
+test_GRN number constraint test_generic_pk primary key,
+class number constraint test_generic_fk1 references library_file(LB_F_no) not null
+);
+create sequence test_generic_seq nocache;
+
+
+
 
 
