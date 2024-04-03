@@ -12,7 +12,10 @@ java {
 }
 
 <<<<<<< HEAD
+<<<<<<< Upstream, based on 5d49201822c36ef31044030b0232d29ec56bf47a
 =======
+=======
+>>>>>>> 8034bf1 update
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -38,7 +41,21 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
+<<<<<<< Upstream, based on 5d49201822c36ef31044030b0232d29ec56bf47a
 >>>>>>> 91efe5e (update)
+=======
+=======
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+>>>>>>> branch 'master' of https://github.com/apfhddy/myWeb.git
+>>>>>>> 8034bf1 update
 }
 
 tasks.named('test') {
