@@ -1,4 +1,4 @@
-create table JDK_VER(
+create table JDK_version(
 JDK_VER_no number constraint JDK_VER_pk primary key,
 real_VER number not null,
 JDK_VER varchar2(10) not null
