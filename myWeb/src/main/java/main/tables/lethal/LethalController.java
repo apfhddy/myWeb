@@ -1,4 +1,4 @@
-package com.example.demo.tables.lethal;
+package main.tables.lethal;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,7 +14,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 public class LethalController {
-
+	
+	public LethalController() {
+		System.out.println("lethal");
+	}
+	
 	@GetMapping("/hidden/download")
 	public void getFile(@RequestParam(name="fileName") String file,HttpServletResponse res) throws IOException {
 		File f = new File("src/main/resources/static/hidden/dir/"+file);

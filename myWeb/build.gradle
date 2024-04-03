@@ -11,6 +11,15 @@ java {
 	sourceCompatibility = '17'
 }
 
+<<<<<<< HEAD
+=======
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+>>>>>>> 91efe5e (update)
 repositories {
 	mavenCentral()
 }
@@ -18,8 +27,18 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+<<<<<<< HEAD
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+=======
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
+>>>>>>> 91efe5e (update)
 }
 
 tasks.named('test') {
