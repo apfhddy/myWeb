@@ -12,9 +12,9 @@ public class Library_dir_RestController {
 	@Autowired
 	private Library_dir_Service library_dir_Service;
 	
+	
 	@GetMapping("dirs/{ver}")
 	public List<Library_dir_DTO> getDirs(@PathVariable("ver")int ver){
-		
 		return library_dir_Service.getDirs(ver);
 	}
 }
