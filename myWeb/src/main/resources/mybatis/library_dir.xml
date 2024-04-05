@@ -4,16 +4,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main.tables.library.library_dir.Library_dir_DAO">
 	<!-- SQL문들을 작성하는 파일 main.tables.library.library_dir.Library_dir_DTO -->
-	<select id="getDir_Flat" parameterType="int" resultType="main.tables.library.library_dir.Library_dir_DTO">
+	<select id="getDirs_Flat" parameterType="int" resultType="main.tables.library.library_dir.Library_dir_DTO">
 		<![CDATA[
 		select LB_D_no, SYS_CONNECT_BY_PATH(name,'.') name
 		from library_dir
 		where parent_no != 0
-		and (select real_ver from JDK_version where add_ver = JDK_VER_no) <= #{ver} 
+		and ((select real_ver from JDK_version where add_ver = JDK_VER_no) <= #{ver} 
 		and remove_ver is null 
-		or #{ver} < (select real_ver from JDK_version where remove_ver = JDK_VER_no) 
+		or #{ver} < (select real_ver from JDK_version where remove_ver = JDK_VER_no))
 		start with parent_no = 0
 		connect by prior LB_D_no = parent_no
+		]]>
+	</select>
+	
+	<select id="getDirs_Tree" parameterType="map" resultType="map" >
+		<![CDATA[
+		select lb_d_no,name,addv.real_ver add_ver,nvl(0,removev.real_ver) remove_ver from library_dir lb
+		inner join JDK_version addv
+		on lb.add_ver = addv.jdk_ver_no
+		left join JDK_version removev
+		on lb.remove_ver = removev.jdk_ver_no
+		where parent_no  = #{parent_no}
+		and (addv.real_ver <= #{ver}
+		and remove_ver is null 
+		or #{ver} < removev.real_ver)
 		]]>
 	</select>
 </mapper>

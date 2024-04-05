@@ -14,7 +14,13 @@ public class Library_dir_RestController {
 	
 	
 	@GetMapping("dirs/{ver}")
-	public List<Library_dir_DTO> getDirs(@PathVariable("ver")int ver){
-		return library_dir_Service.getDirs(ver);
+	public List<Library_dir_DTO> getDir_Flat(@PathVariable("ver")int ver){
+		return library_dir_Service.getDirs_Flat(ver);
+	}
+	
+	@GetMapping("dirs/{ver}/{no}")
+	public List<Library_dir_DTO> getDirs_Tree(@PathVariable("ver") int ver,@PathVariable("no")  int parent_no) {
+		
+		return library_dir_Service.getDirs_Tree(ver, parent_no);
 	}
 }

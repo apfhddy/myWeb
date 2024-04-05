@@ -18,6 +18,7 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public String index(HttpServletRequest req) {
+		//redisService.setRedisTemplate("hh", "g", Long.valueOf("200000000000000"));
 		
 		String ip = req.getHeader("X-FORWARDED-FOR"); 
         
