@@ -12,4 +12,5 @@ public interface Library_dir_DAO {
 	public int getNextSeq();
 	public int insertDir(Library_dir_DTO dto);
 	public int deleteDir(int LB_D_no);
+	public int updateDir(Library_dir_DTO dto);
 }

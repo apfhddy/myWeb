@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getDirs_Tree" parameterType="map" resultType="main.tables.library.library_dir.Library_dir_DTO" >
 		<![CDATA[
-		select lb_d_no,name,addv.real_ver add_ver,remove_ver from library_dir lb
+		select lb_d_no,name,addv.real_ver add_ver,nvl(removev.real_ver,0) remove_ver from library_dir lb
 		inner join JDK_version addv
 		on lb.add_ver = addv.jdk_ver_no
 		left join JDK_version removev
@@ -43,4 +43,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteDir" parameterType="int">
 		delete library_dir where lb_d_no = #{LB_D_no}
 	</delete>
+	
+	<update id="updateDir" parameterType="main.tables.library.library_dir.Library_dir_DTO">
+		update library_dir set D_type_no = #{D_type_no},
+								add_VER = #{add_VER},
+								remove_VER = #{remove_VER},
+								parent_no = #{parent_no},
+								name = #{name}
+		where LB_D_no = #{LB_D_no}
+	</update>
 </mapper>

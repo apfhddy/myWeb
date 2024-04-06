@@ -53,4 +53,10 @@ public class Library_dir_Service {
 	public int deleteDir(int LB_D_no) {
 		return library_dir_DAO.deleteDir(LB_D_no);
 	}
+	
+	public int updateDir(Library_dir_DTO dto,int LB_D_no) {
+		dto.setLB_D_no(LB_D_no);
+		int suc = library_dir_DAO.updateDir(dto);
+		return suc;
+	}
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,4 +38,10 @@ public class Library_dir_RestController {
 	public int deleteDir(@PathVariable("no")  int LB_D_no) {
 		return library_dir_Service.deleteDir(LB_D_no);
 	}
+	
+	@PutMapping("dirs/{no}")
+	public int updateDir(@RequestBody Library_dir_DTO body,@PathVariable("no")  int LB_D_no) {
+		return library_dir_Service.updateDir(body, LB_D_no);
+	}
+	
 }
