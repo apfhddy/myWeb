@@ -10,24 +10,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from library_dir
 		where parent_no != 0
 		and ((select real_ver from JDK_version where add_ver = JDK_VER_no) <= #{ver} 
-		and remove_ver is null 
+		and remove_ver = 0
 		or #{ver} < (select real_ver from JDK_version where remove_ver = JDK_VER_no))
 		start with parent_no = 0
 		connect by prior LB_D_no = parent_no
 		]]>
 	</select>
 	
-	<select id="getDirs_Tree" parameterType="map" resultType="map" >
+	<select id="getDirs_Tree" parameterType="map" resultType="main.tables.library.library_dir.Library_dir_DTO" >
 		<![CDATA[
-		select lb_d_no,name,addv.real_ver add_ver,nvl(0,removev.real_ver) remove_ver from library_dir lb
+		select lb_d_no,name,addv.real_ver add_ver,remove_ver from library_dir lb
 		inner join JDK_version addv
 		on lb.add_ver = addv.jdk_ver_no
 		left join JDK_version removev
 		on lb.remove_ver = removev.jdk_ver_no
 		where parent_no  = #{parent_no}
 		and (addv.real_ver <= #{ver}
-		and remove_ver is null 
+		and remove_ver = 0
 		or #{ver} < removev.real_ver)
 		]]>
 	</select>
+	<select id="getNextSeq" resultType="int">
+		select library_dir_seq.nextval from dual
+	</select>
+	
+	<insert id="insertDir" parameterType="main.tables.library.library_dir.Library_dir_DTO">
+		insert into library_dir values(#{LB_D_no},#{D_type_no},#{add_VER},#{remove_VER},#{parent_no},#{name})
+	</insert>
 </mapper>
