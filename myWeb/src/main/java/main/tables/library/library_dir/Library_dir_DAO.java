@@ -11,4 +11,5 @@ public interface Library_dir_DAO {
 	public List<Library_dir_DTO> getDirs_Tree(Map<String,Integer> map);
 	public int getNextSeq();
 	public int insertDir(Library_dir_DTO dto);
+	public int deleteDir(int LB_D_no);
 }

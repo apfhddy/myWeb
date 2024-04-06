@@ -14,6 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		or #{ver} < (select real_ver from JDK_version where remove_ver = JDK_VER_no))
 		start with parent_no = 0
 		connect by prior LB_D_no = parent_no
+		order by name
 		]]>
 	</select>
 	
@@ -28,6 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and (addv.real_ver <= #{ver}
 		and remove_ver = 0
 		or #{ver} < removev.real_ver)
+		order by name
 		]]>
 	</select>
 	<select id="getNextSeq" resultType="int">
@@ -37,4 +39,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertDir" parameterType="main.tables.library.library_dir.Library_dir_DTO">
 		insert into library_dir values(#{LB_D_no},#{D_type_no},#{add_VER},#{remove_VER},#{parent_no},#{name})
 	</insert>
+	
+	<delete id="deleteDir" parameterType="int">
+		delete library_dir where lb_d_no = #{LB_D_no}
+	</delete>
 </mapper>

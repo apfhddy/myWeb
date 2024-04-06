@@ -47,4 +47,10 @@ public class Library_dir_Service {
 		
 		return returnMap;
 	}
+	
+	
+	
+	public int deleteDir(int LB_D_no) {
+		return library_dir_DAO.deleteDir(LB_D_no);
+	}
 }
