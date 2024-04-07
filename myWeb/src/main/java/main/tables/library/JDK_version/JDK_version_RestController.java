@@ -1,6 +1,6 @@
 package main.tables.library.JDK_version;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +12,9 @@ public class JDK_version_RestController {
 	@Autowired
 	private JDK_version_Service jdk_version_Service;
 	
-	@GetMapping("versions")
-	public List<JDK_version_DTO> getversions() {
-		return jdk_version_Service.getversions();
+	@GetMapping("settings")
+	public Map<String,Object> getSettings() {
+		
+		return jdk_version_Service.getSettings();
 	}
 }
