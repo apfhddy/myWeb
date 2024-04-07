@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import main.tables.library.JDK_version.JDK_version_DAO;
 import main.tables.library.JDK_version.JDK_version_DTO;
+import main.tables.library.library_file.Library_file_DAO;
 
 @Service
 public class Library_dir_Service {
@@ -16,15 +17,17 @@ public class Library_dir_Service {
 	private Library_dir_DAO library_dir_DAO;
 	@Autowired
 	private JDK_version_DAO jdk_version_DAO;
+	@Autowired
+	private Library_file_DAO library_file_DAO;
 	
 	public List<Library_dir_DTO> getDirs_Flat(int ver) {
 		return library_dir_DAO.getDirs_Flat(ver); 
 	}
-	public List<Library_dir_DTO> getDirs_Tree(int ver,int parent_no) {
-		Map<String,Integer> map = new HashMap<>();
-		map.put("ver", ver);
-		map.put("parent_no", parent_no);
-		return library_dir_DAO.getDirs_Tree(map); 
+	public Map<String,Object> getDirs_Tree(int parent_no) {
+		Map<String,Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("dirs", library_dir_DAO.getDirs_Tree(parent_no));
+		returnMap.put("files", library_file_DAO.getFiles(parent_no));
+		return returnMap; 
 	}
 	
 	public Map<String,Object> insertDir(Library_dir_DTO dto) {

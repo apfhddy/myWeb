@@ -19,20 +19,15 @@ import main.tables.library.library_file.Library_file_Service;
 public class Library_dir_RestController {
 	@Autowired
 	private Library_dir_Service library_dir_Service;
-	@Autowired
-	private Library_file_Service library_file_Service;
 	
-	@GetMapping("dirs/{ver}")
+	@GetMapping("dirs-flat/{ver}")
 	public List<Library_dir_DTO> getDir_Flat(@PathVariable("ver")int ver){
 		return library_dir_Service.getDirs_Flat(ver);
 	}
 	
-	@GetMapping("dirs/{ver}/{no}")
-	public Map<String,Object> getDirs_Tree(@PathVariable("ver") int ver,@PathVariable("no")  int parent_no) {
-		Map<String,Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("dirs", library_dir_Service.getDirs_Tree(ver, parent_no));
-		returnMap.put("files", library_file_Service.getFiles(parent_no));
-		return returnMap;
+	@GetMapping("dirs-tree/{no}")
+	public Map<String,Object> getDirs_Tree(@PathVariable("no")  int parent_no) {
+		return library_dir_Service.getDirs_Tree(parent_no);
 	}
 	
 	@PostMapping("dirs")

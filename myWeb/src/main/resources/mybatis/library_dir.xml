@@ -18,18 +18,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
-	<select id="getDirs_Tree" parameterType="map" resultType="main.tables.library.library_dir.Library_dir_DTO" >
+	<select id="getDirs_Tree" parameterType="int" resultType="main.tables.library.library_dir.Library_dir_DTO" >
 		<![CDATA[
-		select lb_d_no,name,addv.real_ver add_ver,nvl(removev.real_ver,0) remove_ver from library_dir lb
+		select lb_d_no,d_type_no,name,addv.real_ver add_ver,nvl(removev.real_ver,0) remove_ver from library_dir lb
 		inner join JDK_version addv
 		on lb.add_ver = addv.jdk_ver_no
 		left join JDK_version removev
 		on lb.remove_ver = removev.jdk_ver_no
 		where parent_no  = #{parent_no}
-		and (addv.real_ver <= #{ver}
-		and remove_ver = 0
-		or #{ver} < removev.real_ver)
-		order by name
+		
 		]]>
 	</select>
 	<select id="getNextSeq" resultType="int">
