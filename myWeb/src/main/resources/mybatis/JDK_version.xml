@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main.tables.library.JDK_version.JDK_version_DAO">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="getversions" resultType="main.tables.library.JDK_version.JDK_version_DTO">
+		select * from JDK_version order by real_VER
+	</select>
+	<select id="getNotoReal_VER" parameterType="int" resultType="int">
+		select real_VER from JDK_version where JDK_VER_no = #{no}
+	</select>
+</mapper>
