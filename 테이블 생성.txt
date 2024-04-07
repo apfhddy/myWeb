@@ -38,7 +38,8 @@ F_type_no number constraint file_type_pk primary key,
 name varchar2(30) constraint file_type_uq1 unique not null
 );
 create sequence file_type_seq nocache;
-
+insert into file_type values(file_type_seq.nextval,'Class');
+insert into file_type values(file_type_seq.nextval,'interface');
 
 
 
