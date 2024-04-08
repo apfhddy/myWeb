@@ -4,5 +4,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main.tables.library.dir_type.Dir_type_DAO">
 	
+	<select id="getDirType" resultType="main.tables.library.dir_type.Dir_type_DTO">
+		select * from dir_type
+	</select>
 
 </mapper>
