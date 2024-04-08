@@ -8,4 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface Library_file_DAO {
 	
 	public List<Library_file_DTO> getFiles(int LB_D_no);
+	public int getNextSeq();
+	public int insertFile(Library_file_DTO dto);
+	public int updateFile(Library_file_DTO dto);
 }
