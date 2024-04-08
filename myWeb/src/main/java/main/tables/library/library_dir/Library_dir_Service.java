@@ -38,16 +38,9 @@ public class Library_dir_Service {
 		
 		Map<String,Object> returnMap = new HashMap<String, Object>();
 		if(suc == 1) {
-			int addReal_VER = jdk_version_DAO.getNotoReal_VER(dto.getAdd_VER());
-			int removeReal_VER = dto.getRemove_VER() == 0 ? 0 : jdk_version_DAO.getNotoReal_VER(dto.getRemove_VER());
-			
 			returnMap.put("isSuccess", suc);
 			returnMap.put("lb_D_no", next);
-			returnMap.put("add_VER", addReal_VER);
-			returnMap.put("remove_VER", removeReal_VER);
 		}else {}
-		
-		
 		return returnMap;
 	}
 	
@@ -59,7 +52,6 @@ public class Library_dir_Service {
 	
 	public int updateDir(Library_dir_DTO dto,int LB_D_no) {
 		dto.setLB_D_no(LB_D_no);
-		int suc = library_dir_DAO.updateDir(dto);
-		return suc;
+		return library_dir_DAO.updateDir(dto);
 	}
 }
