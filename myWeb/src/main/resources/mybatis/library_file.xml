@@ -7,4 +7,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getFiles" parameterType="int" resultType="main.tables.library.library_file.Library_file_DTO">
 		select * from library_file where LB_D_no = #{LB_D_no}
 	</select>
+	
+	<select id="getNextSeq">
+		select library_file_seq.nextval from dual
+	</select>
+	
+	<insert id="insertFile" parameterType="main.tables.library.library_file.Library_file_DTO">
+		insert into library_file values(#{LB_F_no},#{LB_D_no},#{F_type_no},#{add_VER},#{remove_VER},#{isTest},#{name})
+	</insert>
+	<update id="updateFile" parameterType="main.tables.library.library_file.Library_file_DTO">
+		update library_file set F_type_no = #{F_type_no},
+								add_VER = #{add_VER},
+								remove_VER = #{remove_VER},
+								LB_D_no = #{LB_D_no},
+								isTest = #{isTest},
+								name = #{name}
+		where LB_F_no = #{LB_F_no}
+	</update>
+	
 </mapper>
