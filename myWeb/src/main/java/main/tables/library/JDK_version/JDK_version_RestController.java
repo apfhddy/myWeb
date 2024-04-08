@@ -12,6 +12,7 @@ public class JDK_version_RestController {
 	@Autowired
 	private JDK_version_Service jdk_version_Service;
 	
+	
 	@GetMapping("settings")
 	public Map<String,Object> getSettings() {
 		
