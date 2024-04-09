@@ -7,16 +7,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.tables.library.JDK_version.JDK_version_DAO;
-import main.tables.library.JDK_version.JDK_version_DTO;
 import main.tables.library.library_file.Library_file_DAO;
 
 @Service
 public class Library_dir_Service {
 	@Autowired
 	private Library_dir_DAO library_dir_DAO;
-	@Autowired
-	private JDK_version_DAO jdk_version_DAO;
 	@Autowired
 	private Library_file_DAO library_file_DAO;
 	
