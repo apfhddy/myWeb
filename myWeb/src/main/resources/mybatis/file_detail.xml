@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main.tables.library.file_detail.File_detail_DAO">
+
+	<select id="getSameVERDetail" parameterType="map" resultType="main.tables.library.file_detail.File_detail_DTO">
+		<![CDATA[
+		select rownum,s1.* from
+		(
+			select fd.* from file_detail fd,JDK_version jv
+			where lb_f_no = #{LB_F_no}
+			and update_VER = jv.jdk_ver_no
+			and  real_VER <= #{VER}
+			order by real_VER desc
+		) s1
+		where rownum = 1
+		]]>
+	</select>
+	
+	
+</mapper>
